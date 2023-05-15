@@ -2,8 +2,8 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <section id='contact' className='max-w-[800px] flex flex-col justify-center items-center mx-auto'>
-      <h2 className='text-3xl font-bold my-4 border-b-[5px] border-blue-500 w-full'>Contact</h2>
+    <section id='contact' className='max-w-[800px] flex flex-col justify-center items-center mx-auto pt-16'>
+      <h2 className='text-3xl font-bold my-4 border-b-[5px] border-blue-500 w-[94%]'>Contact</h2>
       <section className='flex flex-col sm:flex-row gap-5 mx-4 bg-slate-200 rounded-md px-5 py-3 mt-1'>
         <section className='flex gap-6 flex-col justify-center items-center px-6 w-[300px]'>
           <h4 className='font-semibold text-xl'>Get in touch</h4>
@@ -27,7 +27,7 @@ const Contact = () => {
             <input type="text" className='rounded-md px-4 py-1' placeholder='Subject'/>
             <textarea type="text" className='rounded-md px-4 py-1 h-[150px]' placeholder='Your message'></textarea>
           </div>
-          <button className='px-4 py-2 bg-blue-500 rounded-md text-white'>Send message</button>
+          <button className='px-6 py-2 bg-blue-500 rounded-md text-white font-semibold'>Send message</button>
         </form>
       </section>    
     </section>

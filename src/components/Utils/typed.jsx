@@ -6,15 +6,15 @@ const TypingAnimation = () => {
 
   useEffect(() => {
     const options = {
-      strings: ['Fronted Developer'], // Aquí puedes agregar los textos que deseas animar
-      typeSpeed: 50, // Velocidad de escritura en milisegundos
-      loop: true // Si deseas que la animación se repita en un bucle
+      strings: ['Fronted Developer'], 
+      typeSpeed: 50,
+      loop: true
     };
 
     const typed = new Typed(typedRef.current, options);
 
     return () => {
-      typed.destroy(); // Limpia la instancia de Typed.js al desmontar el componente
+      typed.destroy(); 
     };
   }, []);
 
