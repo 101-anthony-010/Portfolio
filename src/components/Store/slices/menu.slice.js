@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    isShowMenu: true
+    isShowMenu: false
 }
 
 const menuSlice = createSlice({
