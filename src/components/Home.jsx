@@ -1,4 +1,4 @@
-import TypingAnimation from "./Utils/Typed"
+import TypingAnimation from "./Utils/TypingAnimation"
 
 const Home = () => {
   
