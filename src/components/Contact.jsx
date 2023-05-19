@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import sgMail from '@sendgrid/mail';
 
 const DEFAULT_VALUES = {
   name: '',
@@ -14,6 +15,26 @@ const Contact = () => {
   const submit = (data) => {
     console.log(data)
     reset(DEFAULT_VALUES)
+    
+    sgMail.setApiKey('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');
+
+    const msg = {
+      to: 'gonzalescamposantony@gmail.com',
+      from: data.email,
+      subject: 'Nuevo mensaje de contacto',
+      text: `
+        name: ${data.name}
+        email: ${data.email}
+        message: ${data.message}
+      `,
+    };
+
+    sgMail.send(msg)
+      .then(() => alert('Mensaje enviado correctamente'))
+      .catch((error) => {
+        console.error(error);
+        alert('Hubo un error al enviar el mensaje');
+      });
   }
 
   return (
@@ -39,7 +60,7 @@ const Contact = () => {
           <div className='text-sm my-6 flex flex-col gap-2'>
             <input required {...register('name')} id='name' type="text" className='dark:text-black rounded-md px-4 py-1' placeholder='Name'/>
             <input required {...register('email')} id='email' type="email" className='dark:text-black rounded-md px-4 py-1' placeholder='Email Adress'/>
-            <input required {...register('subject')} id='subject' type="text" className='dark:text-black rounded-md px-4 py-1' placeholder='Subject'/>
+            <input {...register('subject')} id='subject' type="text" className='dark:text-black rounded-md px-4 py-1' placeholder='Subject'/>
             <textarea required {...register('message')} id='message' type="text" className='dark:text-black rounded-md px-4 py-1 h-[150px]' placeholder='Your message'></textarea>
           </div>
           <button className='px-6 py-2 bg-blue-500 rounded-md text-white font-semibold'>Enviar mensaje</button>
