@@ -6,8 +6,8 @@ const TypingAnimation = () => {
 
   useEffect(() => {
     const options = {
-      strings: ['Fronted Developer'], 
-      typeSpeed: 50,
+      strings: ['Frontend Developer'], 
+      typeSpeed: 100,
       loop: true
     };
 
