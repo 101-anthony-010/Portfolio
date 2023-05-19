@@ -1,41 +1,39 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import sgMail from '@sendgrid/mail';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import emailjs from 'emailjs-com';
 
 const DEFAULT_VALUES = {
   name: '',
   email: '',
   subject: '',
-  message: ''
-}
+  message: '',
+};
 
 const Contact = () => {
-  const {register, handleSubmit, reset} = useForm()
+  const { register, handleSubmit, reset } = useForm();
 
-  const submit = (data) => {
-    console.log(data)
-    reset(DEFAULT_VALUES)
-    
-    sgMail.setApiKey('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');
+  const submit = async (data) => {
+    reset(DEFAULT_VALUES);
 
-    const msg = {
-      to: 'gonzalescamposantony@gmail.com',
-      from: data.email,
-      subject: 'Nuevo mensaje de contacto',
-      text: `
-        name: ${data.name}
-        email: ${data.email}
-        message: ${data.message}
-      `,
-    };
+    try {
+      await emailjs.send(
+        'service_fzcf5dq',
+        'template_esns3zr',
+        {
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        },
+        'MCg2wBYdI9Yca18_y'
+      );
 
-    sgMail.send(msg)
-      .then(() => alert('Mensaje enviado correctamente'))
-      .catch((error) => {
-        console.error(error);
-        alert('Hubo un error al enviar el mensaje');
-      });
-  }
+      alert('Mensaje enviado correctamente');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <section id='contact' className='max-w-[800px] flex flex-col justify-center items-center mx-auto pt-16'>
